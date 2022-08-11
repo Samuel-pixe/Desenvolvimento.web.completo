@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Museu Nacional</title>
+
+	<link rel="stylesheet" type="text/css" href="CSS/normalize.css">
+	
+	<link rel="stylesheet" type="text/css" href="CSS/estilo.css">
+
+	<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+	<div id="container"><!--Inicio Conteiner-->
+		
+		<header><!--Inicio Head-->
+		
+			<div id="logo">
+				<h1><a href="">Museu Nacional</a></h1>
+				
+			</div>
+
+			<nav><!--Ini NAV-->
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Exposição</a></li>
+					<li><a href="#">Pesquisa</a></li>
+					<li><a href="#">Acervo</a></li>
+					<li><a href="#">Vídeos</a></li>
+					<li><a href="#">Fotos</a></li>
+					<li><a href="#">Contato</a></li>
+				</ul>
+			</nav><!--Fim NAV-->
+
+			<div id="principal"><!--INI Principal-->
+				
+				<div id="conteudo"><!--INI conteudo-->
+					<section id="capa">
+						<img src="img/museu.png">
+					</section>
+
+					<section id="postagens">
+						<article id="video">
+							<h3>Vídeo: conheça o museu</h3><iframe width="310" height="170" src="https://www.youtube.com/embed/RGUYb-hivrc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+						</article>
+
+						<article>
+							<h3>Mappa: Encontre o museu</h3><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.206311665319!2d-43.228717585034445!3d-22.90575998501238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997e58a085b7af%3A0x4d11e9a933d38ce3!2sMuseu%20Nacional%20-%20UFRJ!5e0!3m2!1spt-BR!2sbr!4v1660072465217!5m2!1spt-BR!2sbr" width="310" height="170" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>							
+						</article> 
+
+						<article>
+							<h3>Exposições</h3>
+							<ul>
+								<li>
+									<a href="#">Os asssustadores insetos</a>
+								</li>
+								<li>
+									<a href="#">O crânio de Luzia, a mulher mais antiga do Brasil</a>
+								</li>
+								<li>
+									<a href="#">Preguiça gigante e tigre-debtes-de-sabre</a>
+								</li>
+								<li>
+									<a href="#">Plantas do Brasil Central</a>
+								</li>
+								<li>
+									<a href="#">Teresa Cristina: A imperatriz Arqueóloga</a>
+								</li>
+								<li>
+									<a href="#">Arte Com Dinossauros - Paleoarte</a>
+								</li>
+								<li>
+									<a href="#"><strong>Veja todos (65)</strong></a>
+								</li>
+							</ul>
+						</article>
+
+						<article>
+							<h3>200 anos de história</h3>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed interdum augue. Sed faucibus purus feugiat tristique euismod. Fusce consequat sed nisl at imperdiet. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+							</p>
+							<a href=""><strong>Leia Mais</strong></a>
+						</article>
+					</section>
+
+				</div><!--FIM conteudo-->	
+
+				<aside><!--INI aside-->
+					<section id="depoimento">
+						<img src="img/depoimento.png">
+					</section>
+
+					<section id="visita"><!--INI-SEC_VISITA-->
+						<h4>Faça uma visita</h4>
+						
+						<form>
+							<fieldset>
+								<legend>Selecione uma data</legend>
+
+								<label for="data">Data</label>
+								<input class="campo" type="text" id="data" value="dd/mm/aaaa">
+
+								<label for="qtd">Qtd Pessoas</label>
+								<input class="campo" style="width: 30px;" type="text" id="qtd" value="1">
+								
+							</fieldset>
+
+							<input class="botao" type="submit" name="Verificar disponibilidade">
+
+						</form>
+
+					</section><!--FIM-SEC_VISITA-->
+
+					<section id="galeria"> 
+						<h4>Geleria de fotos</h4>
+						<a href=""> 
+							<img src="img/imagem1.jpg" height="93px" width="93px" alt="Descrição imagem 1">
+						</a>
+						<a href=""> 
+							<img src="img/imagem2.jpg" height="93px" width="93px" alt="Descrição imagem 2">
+						</a>
+						<a href=""> 
+							<img src="img/imagem3.jpg" height="93px" width="93px" alt="Descrição imagem 3">
+						</a>
+						<a href=""> 
+							<img src="img/imagem4.jpg" height="93px" width="93px" alt="Descrição imagem 4">
+						</a>
+					</section>
+				</aside><!--FIM aside-->
+
+			</div><!--FIM Principal-->
+
+		</header><!--Fim Head-->
+
+	</div><!--Fim Conteiner-->
+</body>
+
+</html>
