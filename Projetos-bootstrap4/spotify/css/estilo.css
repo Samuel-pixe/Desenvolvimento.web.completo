@@ -71,7 +71,13 @@ nav.navbar-transparente {
 
 .btn-branco:hover {
 	background-color: white;
-	color: black;
+	
+}
+
+.carousel-control-next, .carousel-control-prev {
+	width: 5%;
+	
+
 }
 /*Estrutura Conteúdos-------------------------*/
 .caixa{

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>JavaScript</title>
+		<script type="text/javascript">
+			
+			var verdadeiro = true
+			var falso = false
+			
+			/*if (verdadeiro==true && falso==false){
+				document.write('Verdadeiro')
+				document.write('<hr />')
+			}
+			else{
+				document.write('Faslo')
+				document.write('<hr />')
+			}*/
+
+			/*if (verdadeiro==false || falso==false){
+				document.write('Verdadeiro')
+				document.write('<hr />')
+			}else{
+				document.write('Faslo')
+				document.write('<hr />')
+			}*/
+
+			/*if (verdadeiro!=falso){
+				document.write('Verdadeiro')
+				document.write('<hr />')
+			}else{
+				document.write('Faslo')
+				document.write('<hr />')
+			}*/
+
+			/*if (!(verdadeiro!=falso)){
+				document.write('Verdadeiro')
+				document.write('<hr />')
+			}else{
+				document.write('Faslo')
+				document.write('<hr />')
+			}*/
+			/**/
+
+			var nota1 = prompt('Digite a primeira nota: ')
+			var nota2 = prompt('Digite a segunda nota: ')
+			var faltas = prompt('Informe o numero de faltas: ')
+			var faltas_maximas = 15
+			var nota3 = null
+			var media = 7
+
+
+			nota3 = parseFloat(nota1)+parseFloat(nota2) 
+			nota3 = parseFloat(nota3/2)  
+			faltas = parseInt(faltas)
+			 
+			/*if (nota3>=media && faltas<=faltas_maximas){
+				document.write('<hr /><br>')
+				document.write('Aluno aprovado')
+				document.write('<hr/><br>')
+
+			}else{
+				document.write('<hr/><br>')
+				document.write('Aluno reprovado')
+				document.write('<hr/><br>')
+			}*/
+			
+			//var resultado = <condicao> ? <verdadeiro> : <falso>
+			var resultado = (nota3>=media && faltas<=faltas_maximas) ? 'Aprovado' : 'Reprovado'
+			document.write(resultado)
+		</script>
+		
+	</head>
+
+	<body>
+		<h1>Media</h1>
+		<hr>
+
+	</body>
+	
+</html>

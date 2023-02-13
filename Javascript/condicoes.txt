@@ -1,0 +1,15 @@
+//---Comparações
+== iguais
+=== iguais e do mesmo tipo
+= diferentes 
+== diferentes e de tipos diferentes
+< menor
+> maior
+<= menor igual
+>= maior igual
+
+//---
+
+&& E - Se todas as exprexões forem verdadeiras
+|| Ou - Verdadeiro se pelo menos uma for verdadeira
+! - Negação 
