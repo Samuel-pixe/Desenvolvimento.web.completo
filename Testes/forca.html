@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jogo da Forca</title>
+	<!-- Importando o CSS do Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<style>
+		#hangman {
+			height: 200px;
+			background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Hangman-0.png/280px-Hangman-0.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+			margin-bottom: 20px;
+		}
+
+		#word {
+			font-size: 30px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		#guesses {
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-center mt-5">Jogo da Forca</h1>
+		<div id="hangman"></div>
+		<div id="word"></div>
+		<div id="guesses"></div>
+		<div class="form-group">
+			<label for="letter">Digite uma letra:</label>
+			<input type="text" class="form-control" id="letter" maxlength="1">
+		</div>
+		<button onclick="guessLetter()" class="btn btn-primary">Adivinhar</button>
+		<button onclick="resetGame()" class="btn btn-secondary">Reiniciar Jogo</button>
+	</div>
+
+	<!-- Importando o JavaScript do Bootstrap e o código personalizado do jogo -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script>
+		var words = ["javascript", "python", "html", "css", "bootstrap"];
+		var word = null;
+		var guesses = [];
+		var incorrectGuesses = 0;
+
+		function startGame() {
+			// Selecionando uma palavra aleatória
+			word = words[Math.floor(Math.random() * words.length)];
+
+			// Inicializando o array de palpites com espaços em branco
+			for (var i = 0; i < word.length; i++) {
+				guesses.push("_");
+			}
+
+			// Atualizando a palavra na tela
+			updateWord();
+		}
+
+		function updateWord() {
+			var wordElement = document.getElementById("word");
+			wordElement.innerHTML = "";
+			for (var i = 0; i < guesses.length; i++) {
+				wordElement.innerHTML += guesses[i] + " ";
+			}
+		}
+
+		function guessLetter() {
+			var letterInput = document.getElementById("letter");
+			var letter = letterInput.value.toLowerCase();
+			letterInput.value = "";
+
+			if (letter.length !== 1) {
+				alert("Por favor, digite uma letra.");
+				return;
+			}
+
+			if (word.indexOf(letter) !== -1)
+		{
+			// A letra está na palavra
+			for (var i = 0; i < word.length; i++) {
+				if (word[i] === letter) {
+					guesses[i] = letter;
+				}
+			}
+			updateWord();
+			checkWin();
+		} else {
+			// A letra não está na palavra
+			incorrectGuesses++;
+			updateHangman();
+			updateGuesses();
+			checkLoss();
+		}
+	}
+
+	function updateHangman() {
+		var hangmanElement = document.getElementById("hangman");
+		hangmanElement.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Hangman-"
+			+ incorrectGuesses + ".png/280px-Hangman-" + incorrectGuesses + ".png')";
+	}
+
+	function updateGuesses() {
+		var guessesElement = document.getElementById("guesses");
+		guessesElement.innerHTML += letter.toUpperCase() + " ";
+	}
+
+	function checkWin() {
+		if (guesses.indexOf("_") === -1) {
+			alert("Parabéns, você ganhou!");
+			resetGame();
+		}
+	}
+
+	function checkLoss() {
+		if (incorrectGuesses === 6) {
+			alert("Você perdeu! A palavra era '" + word + "'.");
+			resetGame();
+		}
+	}
+
+	function resetGame() {
+		word = null;
+		guesses = [];
+		incorrectGuesses = 0;
+		updateHangman();
+		updateWord();
+		updateGuesses();
+		startGame();
+	}
+
+	// Iniciando o jogo quando a página carrega
+	window.onload = function() {
+		startGame();
+	}
+</script>
+</body>
+</html>

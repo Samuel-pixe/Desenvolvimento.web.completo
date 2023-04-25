@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jogo de Memória</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<style>
+		.card {
+			width: 100px;
+			height: 100px;
+			background-color: #f2f2f2;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			margin: 10px;
+			padding: 5px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.card img {
+			max-width: 100%;
+			max-height: 100%;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Jogo de Memória</h1>
+		<div id="board" class="row"></div>
+	</div>
+
+	<script>
+		var images = [
+			"img/1.jpg",
+			"img/2.jpg",
+			"img/3.jpg",
+			"img/4.jpg",
+			"img/5.jpg",
+			"img/6.jpg",
+			"img/7.jpg",
+			"img/8.jpg"
+		];
+
+		var cards = [];
+		var flippedCards = [];
+		var matches = 0;
+
+		function createCards() {
+			// Duplicando as imagens
+			var allImages = images.concat(images);
+
+			// Embaralhando as imagens
+			allImages.sort(function() {
+				return 0.5 - Math.random();
+			});
+
+			// Criando as cartas
+			for (var i = 0; i < allImages.length; i++) {
+				var card = document.createElement("div");
+				card.className = "card col-sm-3";
+				card.setAttribute("data-index", i);
+				card.addEventListener("click", flipCard);
+
+				var image = document.createElement("img");
+				image.src = allImages[i];
+
+				card.appendChild(image);
+				document.getElementById("board").appendChild(card);
+
+				cards.push(card);
+			}
+		}
+
+		function flipCard() {
+			if (flippedCards.length < 2 && !this.classList.contains("flipped")) {
+				this.classList.add("flipped");
+				flippedCards.push(this);
+
+				if (flippedCards.length === 2) {
+					setTimeout(checkMatch, 1000);
+				}
+			}
+		}
+
+		function checkMatch() {
+			if (flippedCards[0].querySelector("img").src === flippedCards[1].querySelector("img").src) {
+				matches++;
+
+				if (matches === images.length) {
+					alert("Parabéns, você ganhou!");
+				}
+			} else {
+				flippedCards[0].classList.remove("flipped");
+				flippedCards[1].classList.remove("flipped");
+			}
+
+			flippedCards = [];
+		}
+
+		function resetGame() {
+			cards.forEach(function(card) {
+				card.classList.remove("flipped");
+			});
+
+			flippedCards = [];
+			matches = 0;
+
+			createCards();
+	
+		document.getElementById("board").innerHTML = "";
+		createCards();
+	}
+
+		createCards();
+	</script>
+</body>
+</html>

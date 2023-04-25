@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jogo da Velha</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.box {
+			height: 100px;
+			width: 100px;
+			border: 1px solid black;
+			font-size: 72px;
+			text-align: center;
+			line-height: 90px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<h1 class="text-center mt-3 mb-5">Jogo da Velha</h1>
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-lg-4">
+				<div class="row">
+					<div class="col-4">
+						<div class="box" id="0"></div>
+					</div>
+					<div class="col-4">
+						<div class="box" id="1"></div>
+					</div>
+					<div class="col-4">
+						<div class="box" id="2"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						<div class="box" id="3"></div>
+					</div>
+					<div class="col-4">
+						<div class="box" id="4"></div>
+					</div>
+					<div class="col-4">
+						<div class="box" id="5"></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						<div class="box" id="6"></div>
+					</div>
+					<div class="col-4">
+						<div class="box" id="7"></div>
+					</div>
+					<div class="col-4">
+						<div class="box" id="8"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center mt-5">
+			<button class="btn btn-primary" id="reset">Reiniciar Jogo</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		// variáveis globais
+		var player = "X";
+		var board = [null, null, null, null, null, null, null, null, null];
+		var gameOver = false;
+		
+		// função para reiniciar o jogo
+		function reset() {
+			player = "X";
+			board = [null, null, null, null, null, null, null, null, null];
+			gameOver = false;
+			$(".box").text("");
+		}
+		
+		// função para verificar se o jogo acabou
+		function checkGameOver() {
+			// verificando linhas horizont
+		for (var i = 0; i < 9; i += 3) {
+			if (board[i] != null && board[i] == board[i+1] && board[i+1] == board[i+2]) {
+				gameOver = true;
+				break;
+			}
+		}
+		
+		// verificando linhas verticais
+		for (var i = 0; i < 3; i++) {
+			if (board[i] != null && board[i] == board[i+3] && board[i+3] == board[i+6]) {
+				gameOver = true;
+				break;
+			}
+		}
+		
+		// verificando diagonais
+		if (board[0] != null && board[0] == board[4] && board[4] == board[8]) {
+			gameOver = true;
+		}
+		else if (board[2] != null && board[2] == board[4] && board[4] == board[6]) {
+			gameOver = true;
+		}
+		
+		// verificando se deu velha
+		if (!gameOver && !board.includes(null)) {
+			gameOver = true;
+		}
+		
+		return gameOver;
+	}
+	
+	// função para atualizar a mensagem de status
+	function updateStatus() {
+		var status = "";
+		if (gameOver) {
+			if (board.includes(null)) {
+				status = "Jogo acabou! O vencedor é: " + player;
+			}
+			else {
+				status = "Deu velha!";
+			}
+		}
+		else {
+			status = "Jogador atual: " + player;
+		}
+		$("#status").text(status);
+	}
+	
+	// função para executar a jogada
+	function play(box) {
+		if (!gameOver && board[box.attr("id")] == null) {
+			board[box.attr("id")] = player;
+			box.text(player);
+			if (checkGameOver()) {
+				updateStatus();
+			}
+			else {
+				player = player == "X" ? "O" : "X";
+				updateStatus();
+			}
+		}
+	}
+	
+	// evento para quando um box for clicado
+	$(".box").click(function() {
+		play($(this));
+	});
+	
+	// evento para reiniciar o jogo
+	$("#reset").click(function() {
+		reset();
+		updateStatus();
+	});
+</script>
+</body>
+</html>
