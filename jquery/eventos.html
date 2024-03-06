@@ -131,26 +131,16 @@
 					
 				})*/
 
-				$('#nome').focus((e) => {
-					console.log('Esse elemento HTML recebeu o foco (nome)')
+				$('#nome, #email').focus((e) => {
+					console.log('Esse elemento HTML recebeu o foco')
 					$(e.target).addClass('inputFocado')
 				})
 
-				$('#email').focus((e) => {
-					console.log('Esse elemento HTML recebeu o foco (e-mail)')
-					$(e.target).addClass('inputFocado')
-				})
-
-				$('#nome').blur((e) => {
-					console.log('Esse elemento HTML perdeu o foco (nome)')
+				$('#nome, #email').blur((e) => {
+					console.log('Esse elemento HTML perdeu o foco')
 					$(e.target).removeClass('inputFocado')
 				})
-
-				$('#email').blur((e) => {
-					console.log('Esse elemento HTML perdeu o foco (e-mail)')
-					$(e.target).removeClass('inputFocado')
-				})
-
+				
 				$('#opcao').change((e) => {
 					console.log($(e.target).val())
 				})
@@ -221,6 +211,9 @@
 				</select>
 				
 				<button type="submit">Enviar</button>
+
+				<br />
+				<a href="http://www.google.com.br">Google</a>
 			</form>
 		</div>
 	</body>
